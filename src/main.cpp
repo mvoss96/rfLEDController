@@ -31,7 +31,7 @@ void loop()
 #ifdef RF_CONTROLL
   rfListen();
 #endif
-#ifdef RF_CONTROLL
+#ifdef WIFI_CONTROLL
   wifiListen();
 #endif
 }

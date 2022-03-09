@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Arduino.h"
 class Leds
 {
 private:
@@ -26,8 +26,7 @@ public:
 
     void setLB()
     {
-        Serial.println("setLB");
-
+        //Serial.println("setLB");
         if (on)
         {
             if (dualWhite)
@@ -39,8 +38,8 @@ public:
             {
                 analogWrite(c1Pin, c1 * brightness / 255);
                 analogWrite(c2Pin, c2 * brightness / 255);
+                analogWrite(c3Pin, c3 * brightness / 255);
             }
-            analogWrite(c3Pin, c3 * brightness / 255);
         }
         else
         {
@@ -142,5 +141,13 @@ public:
     uint8_t getCo()
     {
         return dwColor;
+    }
+
+    bool getDwMode(){
+        return dualWhite;
+    }
+
+    bool getOn(){
+        return on;
     }
 };

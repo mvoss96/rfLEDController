@@ -2,7 +2,7 @@
 #define DEVICE_NAME "rfLEDController"
 
 /*Control Settings*/ 
-//#define RF_CONTROLL     //needs a connected nrf24l01
+#define RF_CONTROLL     //needs a connected nrf24l01
 #define WIFI_CONTROLL     //only on ESP
 
 
@@ -11,7 +11,7 @@
 #define MIN_BR 12
 
 /*set up LED pins, -1 for disable*/
-#define LED1_PIN 3
+#define LED1_PIN 2
 #define LED2_PIN -1
 #define LED3_PIN -1
 
