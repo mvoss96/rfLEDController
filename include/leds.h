@@ -15,17 +15,19 @@ public:
         c1Pin = c1;
         c2Pin = c2;
         c3Pin = c3;
-        c1 = (c1Pin != -1) ? 255 : 0;
-        c2 = (c2Pin != -1) ? 255 : 0;
-        c3 = (c3Pin != -1) ? 255 : 0;
+        this->c1 = (c1Pin != -1) ? 255 : 0;
+        this->c2 = (c2Pin != -1) ? 255 : 0;
+        this->c3 = (c3Pin != -1) ? 255 : 0;
         dualWhite = (c1Pin != -1 && c2Pin != -1 && c3Pin == -1);
         pinMode(c1Pin, OUTPUT);
         pinMode(c2Pin, OUTPUT);
         pinMode(c3Pin, OUTPUT);
     }
-    
+
     void setLB()
     {
+        Serial.println("setLB");
+
         if (on)
         {
             if (dualWhite)
@@ -79,7 +81,7 @@ public:
 
     void setBr(uint8_t br)
     {
-        brightness = br;
+        brightness = (brightness < MIN_BR) ? MIN_BR : br;
         setLB();
     }
 
@@ -92,6 +94,10 @@ public:
     void decBr(uint8_t br)
     {
         brightness = (brightness - br < 0) ? 0 : brightness - br;
+        if (brightness < MIN_BR)
+        {
+            brightness = MIN_BR;
+        }
         setLB();
     }
 

@@ -1,10 +1,12 @@
 #include "defines.h"
+#ifdef RF_CONTROLL
+
 #include <SPI.h>
 #include <math.h>
 #include <NRFLite.h>
 #include "leds.h"
 
-//RF Message Types
+// RF Message Types
 #define TYPE_POWER 0
 #define TYPE_BR_SET 1
 #define TYPE_BR_DEC 2
@@ -18,7 +20,7 @@
 
 extern Leds Led;
 
-struct __attribute__((packed)) RadioPacket //Any packet up to 32 bytes can be sent.
+struct __attribute__((packed)) RadioPacket // Any packet up to 32 bytes can be sent.
 {
     uint8_t FromRadioId;
     uint8_t msgType;
@@ -131,3 +133,5 @@ void rfListen()
         _radio.addAckData(&ackData, sizeof(ackData));
     }
 }
+
+#endif
